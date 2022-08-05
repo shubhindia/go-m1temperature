@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 //go:embed resources/bin/m1templib
@@ -15,7 +16,11 @@ func main() {
 	sensors, _ := exec.Command("/tmp/m1templib", "n").Output()
 	temperatures, _ := exec.Command("/tmp/m1templib", "v").Output()
 
-	fmt.Printf("Sensors: %s\n", sensors)
-	fmt.Printf("Temperatures: %s\n", temperatures)
+	sensorslice := strings.Split(string(sensors), ",")
+	templice := strings.Split(string(temperatures), ",")
+
+	for i := 0; i < (len(sensorslice) - 1); i++ {
+		fmt.Printf("%s : %s\n", sensorslice[i], templice[i])
+	}
 
 }
