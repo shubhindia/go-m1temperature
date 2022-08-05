@@ -151,7 +151,7 @@ void dumpValues(CFArrayRef values)
         CFNumberRef value = CFArrayGetValueAtIndex(values, i);
         double temp = 0.0;
         CFNumberGetValue(value, kCFNumberDoubleType, &temp);
-        printf("%0.1lf, ", temp);
+        printf("%0.1lf,", temp);
     }
 }
 
@@ -160,7 +160,7 @@ void dumpNames(CFArrayRef names, char *cat)
     long count = CFArrayGetCount(names);
     for (int i = 0; i < count; i++) {
         NSString *name = (NSString *)CFArrayGetValueAtIndex(names, i);
-        printf("%s, ", [name UTF8String]);
+        printf("%s,", [name UTF8String]);
     }
 }
 
